@@ -1,6 +1,7 @@
 package e1;
 
 import java.util.Locale;
+import java.util.*;
 
 public class StringCount {
 
@@ -36,71 +37,32 @@ public class StringCount {
     }
 
     public static int countCharIgnoringCase(String text,char c){
-        int cnt = 0, pos,n=0,i=0;
+        int cnt = 0, pos1,pos2;
         if(text == null){
             return 0;
         }
-        String textominusculas[] = text.split("");
-        while (n< textominusculas.length){
-            textominusculas[n] = textominusculas[n].toLowerCase();
-            n++;
-        }
-        while (i< textominusculas.length){
-            if(textominusculas[i] == c){
-
-            }
-            i++;
-        }
-        while(pos!=-1){
+        String textb = text.toLowerCase();
+        String textc = text.toUpperCase();
+        pos1 = textb.indexOf(c);
+        pos2 = textc.indexOf(c);
+        while (pos1 != -1){
             cnt++;
-            pos = textominusculas.indexOf(c, pos + 1);
+            pos1 = textb.indexOf(c,pos1+1);
         }
+        while (pos2 != -1){
+            cnt++;
+            pos2 = textc.indexOf(c,pos2+1);
+        }
+
         return cnt;
-
-
     }
 
-    public static boolean isPasswordSafe(String password){
-        char ch;
-        int cntlength;
-        int cntuc = 0, cntlc = 0, cntdig = 0, cntchar = 0;
+    public static boolean isPasswordSafe(String password) {
+        StringTokenizer passwordt = new StringTokenizer(password);
+        if (passwordt.countTokens()>=8){
 
-
-        if(password.length()<8){
-            return false;
         }else{
-            for(int n = 0; n<=password.length(); n++){
-                if(Character.isUpperCase(password.charAt(n))){
-                    cntuc++;
-                }
-            }
-            if(cntuc<1){
-                return false;
-            } else{
-                for(int n = 0; n<=password.length(); n++) {
-                    if (Character.isLowerCase(password.charAt(n))) {
-                     cntlc++;
-                    }
-                }
-                if(cntlc<1){
-                    return false;
-                } else{
-                    for(int n = 0; n<=password.length(); n++) {
-                        if (Character.isDigit(password.charAt(n))) {
-                            cntdig++;
-                        }
-                    }
-                    if(cntdig<1){
-                        return false;
-                    }else{
-
-                    }
-                }
-            }
-
-
+            return false;
         }
-
-        return true;
     }
 }

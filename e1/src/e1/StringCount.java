@@ -58,11 +58,46 @@ public class StringCount {
     }
 
     public static boolean isPasswordSafe(String password) {
-        StringTokenizer passwordt = new StringTokenizer(password);
-        if (passwordt.countTokens()>=8){
-
-        }else{
+        char[] c = password.toCharArray();
+        int cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt4 = 0;
+        if (password.length() < 8) {
             return false;
+        } else {
+            for (int i = 0; i < c.length; i++) {
+                if (!Character.isUpperCase(c[i])) {
+                    cnt1++;
+                }}
+            if(cnt1>= c.length){
+                return false;
+            }
+            else {
+                for (int j = 0; j < c.length; j++) {
+                    if (!Character.isLowerCase(c[j])) {
+                        cnt2++;
+                    }}
+                if(cnt2>= c.length) {
+                    return false;
+                }
+                else {
+                    for (int k = 0; k < c.length; k++) {
+                        if (!Character.isDigit(c[k])) {
+                            cnt3++;
+                        }}
+                    if(cnt3>= c.length) {
+                        return false;
+                    }
+                    else {
+                        for (int d = 0; d < c.length; d++) {
+                            if (!(c[d] == '?' || c[d] == '@' || c[d] == '#' || c[d] == '$' || c[d] == '.' || c[d] == ',')) {
+                                cnt4++;
+                            }}
+                        if(cnt4>= c.length) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

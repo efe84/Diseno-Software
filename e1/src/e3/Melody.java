@@ -2,18 +2,19 @@ package e3;
 
 public class Melody {
     public enum Notes{
-        Do,
-        Re,
-        Mi,
-        Fa,
-        Sol,
-        La,
-        Si;
+        DO,
+        RE,
+        MI,
+        FA,
+        SOL,
+        LA,
+        SI;
     }
 
     public enum Accidentals{
-        sostenido,
-        bemol;
+        NATURAL,
+        SHARP,
+        FLAT;
     }
     /**
      * Creates an empty Melody instance .
@@ -38,7 +39,7 @@ public class Melody {
      * @throws IllegalArgumentException if the index is not a valid position .
      */
     public Notes getNote ( int index ) {
-        return Melody.note(index);
+    return Notes.DO;
     }
     /**
      * Returns the accidental of the note on the given position
@@ -47,7 +48,7 @@ public class Melody {
      * @throws IllegalArgumentException if the index is not a valid position .
      */
     public Accidentals getAccidental (int index ) {
-        return Melody.accidental(index);
+     return Accidentals.NATURAL;
     }
     /**
      * Returns the duration of the note on the given position
@@ -56,18 +57,18 @@ public class Melody {
      * @throws IllegalArgumentException if the index is not a valid position .
      */
     public float getTime ( int index ) {
-        return Melody.time(index);
+        return 0f;
     }
     /**
      * Returns the number of notes in this melody .
      * @return The number of notes in this melody .
      */
-    public int size () { /* ... */ }
+    public int size () { return 0; }
     /**
      * Returns the duration of this melody .
      * @return The duration of this melody in milliseconds .
      */
-    public float getDuration () { /* ... */ }
+    public float getDuration () { return 0f; }
     /**
      * Performs the equality tests of the current melody with another melody
      * passed as a parameter . Two melodies are equal if they represent the same
@@ -77,7 +78,7 @@ public class Melody {
      * @return true if the melodies are equals , false otherwise .
      */
     @Override
-    public boolean equals ( Object o) { /* ... */ }
+    public boolean equals ( Object o) { return true; }
     /**
      * Returns an integer that is a hash code representation of the melody .
      * Two melodies m1 , m2 that are equals (m1. equals (m2) == true ) must
@@ -85,11 +86,11 @@ public class Melody {
      * @return The hash code of this melody .
      */
     @Override
-    public int hashCode () { /* ... */ }
+    public int hashCode () { return 0;}
     /**
      * The string representation of this melody .
      * @return The String representantion of this melody .
      */
     @Override
-    public String toString () { /* ... */ }
+    public String toString () { return "0"; }
 }

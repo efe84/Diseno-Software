@@ -101,7 +101,7 @@ public class Melody {
      */
     public float getDuration () {
         int i;
-        float Seltime=0,ttime=0;
+        float Seltime,ttime=0;
         for (i=0;i<arrayMelody.size();i++){
             Melody Selected = arrayMelody.get(i);
             Seltime = Selected.time;
@@ -118,7 +118,9 @@ public class Melody {
      * @return true if the melodies are equals , false otherwise .
      */
     @Override
-    public boolean equals ( Object o) { return false; }
+    public boolean equals ( Object o) {
+        return false;
+    }
     /**
      * Returns an integer that is a hash code representation of the melody .
      * Two melodies m1 , m2 that are equals (m1. equals (m2) == true ) must

@@ -2,8 +2,6 @@ package e2;
 
 public class Slopes {
 
-
-
     public static void illegalArguments(char[][] slopeMap,int right,int down){
 
         for (int c = 0; c < slopeMap.length; c++) {
@@ -42,7 +40,7 @@ public class Slopes {
      */
 
     public static int downTheSlope(char[][] slopeMap, int right, int down) {
-        int i = 0, j = 0, x, y,cnt=0,filas,columnas;
+        int i = 0, j = 0, x, y;
         int cntarboles = 0;
 
         Slopes.illegalArguments(slopeMap,right,down);
@@ -80,7 +78,7 @@ public class Slopes {
      */
 
     public static int jumpTheSlope(char[][] slopeMap, int right, int down) {
-        int i = 0, j = 0, x, y,cnt=0,filas,columnas;
+        int i = 0, j = 0, x, y;
         int cntarboles = 0;
 
         Slopes.illegalArguments(slopeMap,right,down);

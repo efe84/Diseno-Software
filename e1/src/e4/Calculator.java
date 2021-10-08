@@ -4,19 +4,6 @@ import java.util.*;
 
 public class Calculator {
                 ArrayList<calc> lista = new ArrayList<>();
-                public enum operaciones {
-                        suma("+"),
-                        resta("-"),
-                        multiplicacion("*"),
-                        division("/");
-
-                        public String op;
-
-                        operaciones(String op) {
-                                this.op = op;
-                        }
-
-                }
 
                 static class calc{
                         String op;
@@ -63,7 +50,7 @@ public class Calculator {
         public void addOperation ( String operation , float ... values ) {
                 float valor1,valor2;
                 valor1 = values[0];
-                if(operation != "+" && operation != "-" && operation != "*" && operation !="/"){
+                if(!operation.equals("+") && !operation.equals("-") && !operation.equals("*") && !operation.equals("/")){
                         throw new IllegalArgumentException("Not Valid Operation");
                 }
                 if(values.length == 1){
@@ -84,8 +71,53 @@ public class Calculator {
          * ( division by zero )
          */
         public float executeOperations () {
-                float resultado = 0;
+                float resultado = 0,resultado1 = 0,almacenado = 0;
 
+                for (int i=0;i<lista.size();i++) {
+                        calc calc = lista.get(i);
+                        if(calc.valor2 == 0 && calc.valor1 != 0 && i == 0 || calc.valor1 == 0 && calc.op.equals("/")){
+                                lista.clear();
+                                throw new ArithmeticException();
+
+                        }
+
+                        if(calc.valor2 != 0 && i==0) {
+                                switch (calc.op) {
+                                        case "+":
+                                                resultado1 = calc.valor1 + calc.valor2;
+                                                break;
+                                        case "-":
+                                                resultado1 = calc.valor1 - calc.valor2;
+                                                break;
+                                        case "*":
+                                                resultado1 = calc.valor1 * calc.valor2;
+                                                break;
+                                        case "/":
+                                                resultado1 = calc.valor1 / calc.valor2;
+                                                break;
+
+                                }
+                        }else{
+                                switch (calc.op) {
+                                        case "+":
+                                                resultado1 = almacenado + calc.valor1;
+                                                break;
+                                        case "-":
+                                                resultado1 = almacenado - calc.valor1;
+                                                break;
+                                        case "*":
+                                                resultado1 = almacenado * calc.valor1;
+                                                break;
+                                        case "/":
+                                                resultado1 = almacenado / calc.valor1;
+                                                break;
+
+                                }
+                        }
+                        resultado = resultado1;
+                        almacenado = resultado;
+                }
+                lista.clear();
                 return resultado;
         }
         /**
@@ -97,7 +129,7 @@ public class Calculator {
          */
         @Override
         public String toString () {
-                String concat1 ="[";
+                String concat1 ="";
                 if(this.lista.size() == 0){
                         return "[STATE:]";
                 }
@@ -106,9 +138,16 @@ public class Calculator {
                         String op = Selected.op;
                         String value1 = String.valueOf(Selected.valor1);
                         String value2 = String.valueOf(Selected.valor2);
-
+                        if(i == 0){
+                                concat1 = concat1.concat("[STATE:");
+                        }
+                        if(value2.equals("0.0") || i != 0){
+                                concat1 = concat1.concat("[").concat(op).concat("]").concat(value1);
+                        }else{
+                                concat1 = concat1.concat("[").concat(op).concat("]").concat(value1).concat("_").concat(value2);
+                        }
                         if (i == this.lista.size()-1){
-                                concat1 = concat1.concat("STATE:[").concat(op).concat("]").concat(value1).concat("_").concat(value2).concat("]");
+                                concat1 = concat1.concat("]");
                         }
 
                 }

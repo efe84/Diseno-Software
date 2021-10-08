@@ -233,6 +233,7 @@ public class Melody {
      */
     @Override
     public int hashCode () {
+        //No hemos sido capaces de hacerlo, devolvemos 0 para poder compilar y ejecutar el test
         return 0;
     }
     /**
@@ -245,11 +246,11 @@ public class Melody {
         for (int i = 0; i < this.size(); i++) {
             String notes = String.valueOf(this.getNote(i));
             String accidentals = String.valueOf(this.getAccidental(i));
-            if (accidentals == "FLAT") {
+            if (accidentals.equals("FLAT")) {
                 accidentals = "b";
-            } else if (accidentals == "SHARP") {
+            } else if (accidentals.equals("SHARP")) {
                 accidentals = "#";
-            } else if (accidentals == "NATURAL") {
+            } else if (accidentals.equals("NATURAL")) {
                 accidentals = "";
             }
             String time = String.valueOf(this.getTime(i));

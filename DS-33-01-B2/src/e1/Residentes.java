@@ -1,25 +1,22 @@
 package e1;
 
-public class Residentes {
-        public enum residentes {
-            estudiantes,
-            fantasmas;
-        }
-        public enum Casas {
-            Gryffindor,
-            Hufflepuff,
-            Ravenclaw,
-            Slytherin;
-        }
+import java.util.ArrayList;
 
-        public residentes residente;
-        public Casas casa;
+public class Residentes extends Integrantes{
+    public enum Casas{
+        Gryffindor,
+        Hufflepuff,
+        Ravenclaw,
+        Slytherin;
+    }
+    public Casas casa;
 
     public Residentes() {
     }
 
-    public Residentes(residentes residente, Casas casa) {
-        this.residente = residente;
+    public Residentes(String nombre, String apellido, int edad, float horrocruxes, Casas casa){
+        super(nombre,apellido,edad,horrocruxes);
         this.casa = casa;
     }
+
 }

@@ -13,4 +13,11 @@ public class Fantasmas extends Residentes{
         }
         return super.getRecompensa(horrocruxes*80);
     }
+
+    public String toStringRecompensa(Fantasmas fantasma){
+        String concat = "";
+        String recompensa = String.valueOf(fantasma.getRecompensa(fantasma.horrocruxes));
+        concat += fantasma.nombre.concat(" ").concat(fantasma.apellido).concat(" ").concat("(Fantasma de ").concat(String.valueOf(fantasma.casa)).concat(" ,").concat(String.valueOf(fantasma.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones");
+        return concat;
+    }
 }

@@ -1,7 +1,5 @@
 package e1;
 
-import java.util.ArrayList;
-
 public class Personal extends Integrantes{
     public int salario;
 

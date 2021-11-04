@@ -1,7 +1,5 @@
 package e1;
 
-import java.util.ArrayList;
-
 public class Integrantes extends Colegio{
     public String nombre;
     public String apellido;
@@ -21,6 +19,7 @@ public class Integrantes extends Colegio{
     public float getRecompensa(float horrocruxes){
         return horrocruxes;
     }
+
 }
 
 

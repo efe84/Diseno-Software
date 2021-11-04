@@ -13,4 +13,11 @@ public class Estudiantes extends Residentes{
         }
         return super.getRecompensa(horrocruxes*90);
     }
+
+    public String toStringRecompensa(Estudiantes estudiante){
+        String concat = "";
+        String recompensa = String.valueOf(estudiante.getRecompensa(estudiante.horrocruxes));
+        concat += estudiante.nombre.concat(" ").concat(estudiante.apellido).concat(" ").concat("(Estudiante de ").concat(String.valueOf(estudiante.casa)).concat(" ,").concat(String.valueOf(estudiante.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones");
+        return concat;
+    }
 }

@@ -2,51 +2,62 @@ package e1;
 
 import java.util.*;
 
-public class Colegio {
+public class Colegio{
 
     //Declaracion de listas
     public ArrayList<Integrantes> ListaIntegrantes = new ArrayList<>();
-    public ArrayList<Personal> ListaPersonal = new ArrayList<>();
-    public ArrayList<Docentes> ListaDocentes = new ArrayList<>();
-    public ArrayList<Guardabosques> ListaGuardabosques = new ArrayList<>();
-    public ArrayList<Conserjes> ListaConserjes = new ArrayList<>();
-    public ArrayList<Residentes> ListaResidentes = new ArrayList<>();
-    public ArrayList<Estudiantes> ListaEstudiantes = new ArrayList<>();
-    public ArrayList<Fantasmas> ListaFantasmas = new ArrayList<>();
 
     //Funcion imprimirRecompensas
-    public String imprimirRecompensas(Integrantes integrantes){ //Puede ser pasandole un Object en vez de Integrantes
+    public String imprimirRecompensas(ArrayList<Integrantes> integrantes){
         int n=0;
-        while (n<ListaIntegrantes.size()){
-            Docentes d1 = ListaDocentes.get(n);
-            Personal p1 = ListaPersonal.get(n);
-            Guardabosques g1 = ListaGuardabosques.get(n);
-            Conserjes c1 = ListaConserjes.get(n);
-            Residentes r1 = ListaResidentes.get(n);
-            Estudiantes e1 = ListaEstudiantes.get(n);
-            Fantasmas f1 = ListaFantasmas.get(n);
-
-
-            if(integrantes.nombre == d1.nombre){
-            }else if(integrantes.nombre == p1.nombre){
-                if (integrantes.nombre == g1.nombre){
-                }else if(integrantes.nombre == c1.nombre){
-                }
-            }else if(integrantes.nombre == r1.nombre){
-                if(integrantes.nombre == e1.nombre){
-                }else if(integrantes.nombre == f1.nombre){
-                }
+        float total=0.0f;
+        String concat ="";
+        while (n<= integrantes.size()){
+            if(integrantes.get(n) instanceof Docentes docentes){
+                concat += docentes.toStringRecompensa((Docentes) integrantes.get(n));
+                total += docentes.getRecompensa(integrantes.get(n).horrocruxes);
+            }else if(integrantes.get(n) instanceof Guardabosques guardabosques){
+                concat += guardabosques.toStringRecompensa((Guardabosques)integrantes.get(n));
+                total += guardabosques.getRecompensa(integrantes.get(n).horrocruxes);
+            }else if(integrantes.get(n) instanceof Conserjes conserjes){
+                concat += conserjes.toStringRecompensa((Conserjes) integrantes.get(n));
+                total += conserjes.getRecompensa(integrantes.get(n).horrocruxes);
+            }else if(integrantes.get(n) instanceof Estudiantes estudiantes){
+                concat += estudiantes.toStringRecompensa((Estudiantes)integrantes.get(n));
+                total += estudiantes.getRecompensa(integrantes.get(n).horrocruxes);
+            }else if(integrantes.get(n) instanceof Fantasmas fantasmas){
+                concat += fantasmas.toStringRecompensa((Fantasmas)integrantes.get(n));
+                total += fantasmas.getRecompensa(integrantes.get(n).horrocruxes);
             }else{
-                System.out.println("Error de nombre al imprimir recompensa");
+                return "Error de tipo de persona en imprimir recompensa";
             }
             n++;
         }
-        return "0";
+        return concat.concat("La recompensa total del Colegio Howarts es de ").concat(String.valueOf(total)).concat(" galeones");
     }
 
+
     //Funcion imprimirSalarios
-    public String imprimirSalarios(Personal personal){
-        personal.getSalario(personal);
-        return "0";
+    public String imprimirSalarios(ArrayList<Integrantes> integrantes) {
+        int n = 0,total=0;
+        String concat ="";
+        while (n <= integrantes.size()) {
+            if (integrantes.get(n) instanceof Personal) {
+                if (integrantes.get(n) instanceof Docentes docentes) {
+                    concat += docentes.toStringSalario((Docentes) integrantes.get(n));
+                    total += docentes.getSalario((Docentes) integrantes.get(n));
+                } else if (integrantes.get(n) instanceof Guardabosques guardabosques) {
+                    concat += guardabosques.toStringSalario((Guardabosques)integrantes.get(n));
+                    total += guardabosques.getSalario((Guardabosques) integrantes.get(n));
+                } else if(integrantes.get(n) instanceof Conserjes conserjes){
+                    concat += conserjes.toStringSalario((Conserjes) integrantes.get(n));
+                    total += conserjes.getSalario((Conserjes) integrantes.get(n));
+                }else{
+                    return "Error de tipo de persona Personal";
+                }
+            }
+            n++;
+        }
+        return concat.concat("El gasto de Howarts en personal es de ").concat(String.valueOf(total)).concat(" galeones");
     }
 }

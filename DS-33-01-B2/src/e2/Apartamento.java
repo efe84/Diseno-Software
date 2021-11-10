@@ -1,6 +1,5 @@
 package e2;
 
-import javax.print.attribute.standard.PrinterMoreInfoManufacturer;
 import java.util.*;
 
 public class Apartamento implements Comparable<Apartamento>{

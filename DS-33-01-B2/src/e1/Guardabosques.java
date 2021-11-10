@@ -14,7 +14,7 @@ public class Guardabosques extends Personal {
     public String toStringRecompensa(Guardabosques guardabosques){
         String concat = "";
         String recompensa = String.valueOf(guardabosques.getRecompensa(guardabosques.horrocruxes));
-        concat += guardabosques.nombre.concat(" ").concat(guardabosques.apellido).concat(" ").concat("(Guardabosques").concat(" ,").concat(String.valueOf(guardabosques.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones");
+        concat += guardabosques.nombre.concat(" ").concat(guardabosques.apellido).concat("(Guardabosques").concat(" ,").concat(String.valueOf((int)guardabosques.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones\n");
         return concat;
     }
 
@@ -26,7 +26,7 @@ public class Guardabosques extends Personal {
     public String toStringSalario(Guardabosques guardabosque){
         String concat = "";
         String salario = String.valueOf(guardabosque.getSalario(guardabosque));
-        concat += guardabosque.nombre.concat(" ").concat(guardabosque.apellido).concat(" ").concat("(Guardabosques): ").concat(salario).concat(" galeones").concat("\n");
+        concat += guardabosque.nombre.concat(" ").concat(guardabosque.apellido).concat("(Guardabosques): ").concat(salario).concat(" galeones\n");
         return concat;
     }
 }

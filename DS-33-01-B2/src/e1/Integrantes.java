@@ -1,13 +1,11 @@
 package e1;
 
-public class Integrantes extends Colegio{
+public class Integrantes{
     public String nombre;
     public String apellido;
     public int edad;
     public float horrocruxes;
 
-    public Integrantes() {
-    }
 
     public Integrantes(String nombre, String apellido, int edad, float horrocruxes) {
         this.nombre = nombre;

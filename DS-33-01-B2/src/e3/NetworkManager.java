@@ -3,7 +3,7 @@ package e3;
 import java.util.List;
 
 public class NetworkManager extends Network{
-    void addUser(String user, List<TopicOfInterest> topicOfInterests){
+  /*  void addUser(String user, List<TopicOfInterest> topicOfInterests){
     }
     void removeUser(String user){
     }
@@ -16,5 +16,5 @@ public class NetworkManager extends Network{
     List<TopicOfInterest> getIterests(){
     }
     List<TopicOfInterest> getInterstsUser(String user){
-    }
+    }*/
 }

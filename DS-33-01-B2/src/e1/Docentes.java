@@ -1,5 +1,7 @@
 package e1;
 
+import java.util.ArrayList;
+
 public class Docentes extends Personal{
     public enum Asignaturas{
         Historia,
@@ -20,13 +22,13 @@ public class Docentes extends Personal{
         if (asignatura == Asignaturas.Defensa){
             return super.getRecompensa(horrocruxes*50*75/100);
         }
-        return super.getRecompensa(horrocruxes*65);
+        return super.getRecompensa(horrocruxes*50);
     }
 
     public String toStringRecompensa(Docentes docentes){
         String concat = "";
         String recompensa = String.valueOf(docentes.getRecompensa(docentes.horrocruxes));
-        concat += docentes.nombre.concat(" ").concat(docentes.apellido).concat(" ").concat("(Docente de ").concat(String.valueOf(docentes.asignatura)).concat(" ,").concat(String.valueOf(docentes.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones").concat("\n");
+        concat += docentes.nombre.concat(" ").concat(docentes.apellido).concat("(Docente de ").concat(String.valueOf(docentes.asignatura)).concat(" ,").concat(String.valueOf((int)docentes.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones").concat("\n");
         return concat;
     }
 
@@ -49,7 +51,7 @@ public class Docentes extends Personal{
     public String toStringSalario(Docentes docente){
         String concat = "";
         String salario = String.valueOf(docente.getSalario(docente));
-        concat += docente.nombre.concat(" ").concat(docente.apellido).concat(" ").concat("(Docente de ").concat(String.valueOf(docente.asignatura)).concat("): ").concat(salario).concat(" galeones").concat("\n");
+        concat += docente.nombre.concat(" ").concat(docente.apellido).concat("(Docente de ").concat(String.valueOf(docente.asignatura)).concat("): ").concat(salario).concat(" galeones").concat("\n");
         return concat;
     }
 }

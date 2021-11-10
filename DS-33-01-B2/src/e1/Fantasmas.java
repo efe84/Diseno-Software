@@ -2,7 +2,7 @@ package e1;
 
 public class Fantasmas extends Residentes{
 
-    public Fantasmas(String nombre,String apellido, int edad,int horrocruxes,Casas casa){
+    public Fantasmas(String nombre,String apellido, int edad,float horrocruxes,Casas casa){
         super(nombre,apellido,edad,horrocruxes,casa);
     }
 
@@ -17,7 +17,7 @@ public class Fantasmas extends Residentes{
     public String toStringRecompensa(Fantasmas fantasma){
         String concat = "";
         String recompensa = String.valueOf(fantasma.getRecompensa(fantasma.horrocruxes));
-        concat += fantasma.nombre.concat(" ").concat(fantasma.apellido).concat(" ").concat("(Fantasma de ").concat(String.valueOf(fantasma.casa)).concat(" ,").concat(String.valueOf(fantasma.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones");
+        concat += fantasma.nombre.concat(" ").concat(fantasma.apellido).concat("(Fantasma de ").concat(String.valueOf(fantasma.casa)).concat(" ,").concat(String.valueOf((int)fantasma.horrocruxes)).concat(" horrocruxes): ").concat(recompensa).concat(" galeones\n");
         return concat;
     }
 }

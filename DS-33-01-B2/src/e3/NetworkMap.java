@@ -7,11 +7,23 @@ import java.util.concurrent.ConcurrentMap;
 
 public class NetworkMap implements NetworkManager {
 
-    private HashMap<String,List<TopicOfInterest>> newMap= new HashMap<String,List<TopicOfInterest>>();
+    private HashMap<String,List<TopicOfInterest>> newMap;
+
+    public NetworkMap(){
+        newMap = new HashMap<>();
+    }
+
+    public String toString(){
+        String concat = "";
+        for(String user : this.getUsers()){
+            concat += String.format("%s%s ", user, this.getInterestsUser(user));
+        }
+        return concat;
+    }
 
     @Override
     public void addUser(String user, List<TopicOfInterest> topicOfInterests) {
-        newMap.put(user,topicOfInterests);
+        this.newMap.put(user,topicOfInterests);
     }
 
     @Override
@@ -21,11 +33,12 @@ public class NetworkMap implements NetworkManager {
 
     @Override
     public void addInterest(String user, TopicOfInterest topicOfInterest) {
+        newMap.get(user).add(topicOfInterest);
     }
 
     @Override
     public void removeInterest(String user, TopicOfInterest topicOfInterest) {
-
+         newMap.get(user).remove(topicOfInterest);
     }
 
     @Override
@@ -35,11 +48,19 @@ public class NetworkMap implements NetworkManager {
 
     @Override
     public List<TopicOfInterest> getIterests() {
-        return null;
+        List<TopicOfInterest> listaUsers = new ArrayList<>();
+        for(String usuario : newMap.keySet()){
+            for(TopicOfInterest interes: newMap.get(usuario)){
+                if(!listaUsers.contains(interes)){
+                    listaUsers.add(interes);
+                }
+            }
+        }
+        return listaUsers;
     }
 
     @Override
     public List<TopicOfInterest> getInterestsUser(String user) {
-        return null;
+        return newMap.get(user);
     }
 }

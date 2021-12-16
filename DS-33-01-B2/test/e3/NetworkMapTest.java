@@ -76,10 +76,6 @@ class NetworkMapTest {
         listaD.add(new TopicOfInterest("arte"));
         listaD.add(new TopicOfInterest("programar"));
         listaD.add(new TopicOfInterest("deporte"));
-        listaD.add(new TopicOfInterest("coches"));
-        listaD.add(new TopicOfInterest("arte"));
-        listaD.add(new TopicOfInterest("programar"));
-        listaD.add(new TopicOfInterest("deporte"));
         assertEquals(listaD, newNetworkMap.getIterests());
     }
     @Test

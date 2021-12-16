@@ -1,0 +1,81 @@
+package e1;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BilleteTest {
+    List<Billete> ListaBilletes = new ArrayList<>();
+    Billete billete1 = new Billete("Coruña","Ourense",10,"16/12/2021");
+    Billete billete2 = new Billete("Santiago","Ourense",16,"17/12/2021");
+    Billete billete3 = new Billete("Ourense","Coruña",10,"17/12/2021");
+    Billete billete4 = new Billete("Ourense","Santiago",16,"16/12/2021");
+
+    @BeforeEach
+    void setUp(){
+        ListaBilletes.add(billete1);
+        ListaBilletes.add(billete2);
+        ListaBilletes.add(billete3);
+        ListaBilletes.add(billete4);
+    }
+
+    @Test
+    void testBuscarOrigen(){
+        BuscarOrigen origen1 = new BuscarOrigen("Coruña");
+        BuscarOrigen origen2 = new BuscarOrigen("Lugo");
+        List<Billete> ListaResultado1 = new ArrayList<>();
+        List<Billete> ListaResultado2 = new ArrayList<>();
+        ListaResultado1.add(billete1);
+        //1 billete desde Coruña
+        assertEquals(ListaResultado1,origen1.buscar(ListaBilletes));
+        //Ningun billete desde Lugo
+        assertEquals(ListaResultado2,origen2.buscar(ListaBilletes));
+    }
+
+    @Test
+    void testBuscarDestino(){
+        BuscarDestino destino1 = new BuscarDestino("Ourense");
+        BuscarDestino destino2 = new BuscarDestino("Lugo");
+        List<Billete> ListaResultado1 = new ArrayList<>();
+        List<Billete> ListaResultado2 = new ArrayList<>();
+        ListaResultado1.add(billete1);
+        ListaResultado1.add(billete2);
+        //2 billetes a Ourense
+        assertEquals(ListaResultado1,destino1.buscar(ListaBilletes));
+        //Ningun billete a Lugo
+        assertEquals(ListaResultado2,destino2.buscar(ListaBilletes));
+    }
+
+    @Test
+    void testBuscarFecha(){
+        BuscarFecha fecha1 = new BuscarFecha("16/12/2021");
+        BuscarFecha fecha2 = new BuscarFecha("31/12/2021");
+        List<Billete> ListaResultado1 = new ArrayList<>();
+        List<Billete> ListaResultado2 = new ArrayList<>();
+        ListaResultado1.add(billete1);
+        ListaResultado1.add(billete4);
+        //2 billetes para el 16/12/2021
+        assertEquals(ListaResultado1,fecha1.buscar(ListaBilletes));
+        //Ningun billete para el 31/12/2021
+        assertEquals(ListaResultado2,fecha2.buscar(ListaBilletes));
+    }
+
+    @Test
+    void testBuscarPrecio(){
+        BuscarPrecio precio1 = new BuscarPrecio(15);
+        BuscarPrecio precio2 = new BuscarPrecio(9);
+        List<Billete> ListaResultado1 = new ArrayList<>();
+        List<Billete> ListaResultado2 = new ArrayList<>();
+        ListaResultado1.add(billete1);
+        ListaResultado1.add(billete3);
+        //2 billetes por menos de 15€
+        assertEquals(ListaResultado1,precio1.buscar(ListaBilletes));
+        //Ningun billete por menos de 9€
+        assertEquals(ListaResultado2,precio2.buscar(ListaBilletes));
+    }
+
+}

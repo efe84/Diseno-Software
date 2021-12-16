@@ -8,10 +8,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BilleteTest {
+class BilleteTest{
     List<Billete> ListaBilletes = new ArrayList<>();
     Billete billete1 = new Billete("Coruña","Ourense",10,"16/12/2021");
-    Billete billete2 = new Billete("Santiago","Ourense",16,"17/12/2021");
+    Billete billete2 = new Billete("Santiago","Madrid",16,"17/12/2021");
     Billete billete3 = new Billete("Ourense","Coruña",10,"17/12/2021");
     Billete billete4 = new Billete("Ourense","Santiago",16,"16/12/2021");
 
@@ -43,8 +43,7 @@ class BilleteTest {
         List<Billete> ListaResultado1 = new ArrayList<>();
         List<Billete> ListaResultado2 = new ArrayList<>();
         ListaResultado1.add(billete1);
-        ListaResultado1.add(billete2);
-        //2 billetes a Ourense
+        //1 billete a Ourense
         assertEquals(ListaResultado1,destino1.buscar(ListaBilletes));
         //Ningun billete a Lugo
         assertEquals(ListaResultado2,destino2.buscar(ListaBilletes));
@@ -78,4 +77,27 @@ class BilleteTest {
         assertEquals(ListaResultado2,precio2.buscar(ListaBilletes));
     }
 
+    @Test
+    void testBuscador(){
+        List<BuscarOrigen> ListaOrigenes = new ArrayList<>();
+        List<BuscarFecha> ListaFechas = new ArrayList<>();
+        BuscarOrigen origen1 = new BuscarOrigen("Coruña");
+        BuscarOrigen origen2 = new BuscarOrigen("Santiago");
+        ListaOrigenes.add(origen1);
+        ListaOrigenes.add(origen2);
+        BuscarDestino destino = new BuscarDestino("Ourense");
+        BuscarFecha fecha1 = new BuscarFecha("16/12/2021");
+        BuscarFecha fecha3 = new BuscarFecha("17/12/2021");
+        BuscarFecha fecha2 = new BuscarFecha("31/12/2021");
+        ListaFechas.add(fecha1);
+        ListaFechas.add(fecha2);
+        ListaFechas.add(fecha3);
+        BuscarPrecio precio = new BuscarPrecio(15);
+
+        List<Billete> Resultado = new ArrayList<>();
+        Resultado.add(billete1);
+
+        Buscador buscador = new Buscador(ListaOrigenes,destino,ListaFechas,precio);
+        assertEquals(Resultado,buscador.buscar(ListaBilletes));
+    }
 }

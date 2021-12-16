@@ -13,7 +13,7 @@ public class BuscarOrigen implements Componente{
 
     @Override
     public List<Billete> buscar(List<Billete> ListaBilletes) {
-        for (Billete billete : ListaBilletes ){
+        for (Billete billete : ListaBilletes){
             if(billete.getOrigen() == this.origen){
                 ListaBilletesOrigen.add(billete);
             }

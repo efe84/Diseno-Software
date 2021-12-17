@@ -8,6 +8,10 @@ public class Billete{
     private float precio;
     private String fecha;
 
+    public Billete(){
+
+    }
+
     public Billete(String origen, String destino, float precio, String fecha) {
         this.origen = origen;
         this.destino = destino;

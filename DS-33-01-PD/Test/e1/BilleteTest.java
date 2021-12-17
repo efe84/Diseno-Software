@@ -10,13 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BilleteTest{
     List<Billete> ListaBilletes = new ArrayList<>();
-    Billete billete1 = new Billete("Coruña","Ourense",10,"16/12/2021");
+    Billete billete1 = new Billete();
     Billete billete2 = new Billete("Santiago","Madrid",16,"17/12/2021");
     Billete billete3 = new Billete("Ourense","Coruña",10,"17/12/2021");
     Billete billete4 = new Billete("Ourense","Santiago",16,"16/12/2021");
 
     @BeforeEach
     void setUp(){
+        billete1.setOrigen("Coruña");
+        billete1.setDestino("Ourense");
+        billete1.setPrecio(10);
+        billete1.setFecha("16/12/2021");
         ListaBilletes.add(billete1);
         ListaBilletes.add(billete2);
         ListaBilletes.add(billete3);
@@ -97,7 +101,11 @@ class BilleteTest{
         List<Billete> Resultado = new ArrayList<>();
         Resultado.add(billete1);
 
-        Buscador buscador = new Buscador(ListaOrigenes,destino,ListaFechas,precio);
+        Buscador buscador = new Buscador();
+        buscador.setListaOrigenes(ListaOrigenes);
+        buscador.setDestino(destino);
+        buscador.setListaFechas(ListaFechas);
+        buscador.setPrecio(precio);
         assertEquals(Resultado,buscador.buscar(ListaBilletes));
     }
 }

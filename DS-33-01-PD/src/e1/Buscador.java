@@ -9,6 +9,8 @@ public class Buscador implements Componente{
     private List<BuscarFecha> ListaFechas;
     private BuscarPrecio precio;
 
+    public Buscador(){
+    }
 
     public Buscador(List<BuscarOrigen> listaOrigenes, BuscarDestino destino, List<BuscarFecha> listaFechas,
                     BuscarPrecio precio) {

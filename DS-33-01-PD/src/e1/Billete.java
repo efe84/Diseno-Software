@@ -1,7 +1,5 @@
 package e1;
 
-import java.util.ArrayList;
-
 public class Billete{
     private String origen;
     private String destino;

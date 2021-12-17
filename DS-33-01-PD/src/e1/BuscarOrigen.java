@@ -14,7 +14,7 @@ public class BuscarOrigen implements Componente{
     @Override
     public List<Billete> buscar(List<Billete> ListaBilletes) {
         for (Billete billete : ListaBilletes){
-            if(billete.getOrigen() == this.origen){
+            if(billete.getOrigen().equals(this.origen)){
                 ListaBilletesOrigen.add(billete);
             }
         }

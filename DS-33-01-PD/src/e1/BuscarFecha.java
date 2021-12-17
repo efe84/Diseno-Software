@@ -14,7 +14,7 @@ public class BuscarFecha implements Componente{
     @Override
     public List<Billete> buscar(List<Billete> ListaBilletes) {
         for (Billete billete : ListaBilletes ){
-            if(billete.getFecha() == this.fecha){
+            if(billete.getFecha().equals(this.fecha)){
                 ListaBilletesFecha.add(billete);
             }
         }
